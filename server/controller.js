@@ -36,9 +36,10 @@ module.exports = {
         let index = movies.findIndex(movie => movie.id===+id)
         if(index===-1){
             res.status(400).send('User not found')
-        } else if(movies[index].rating === 5 && type==='plus'){
+        } else if(+movies[index].rating === 5 && type==='plus'){
             res.status(400).send('Rating cannot go higher than 5')
-        } else if(movies[index].rating === 0 && type==='minus'){
+        } else if(+movies[index].rating === 0 && type==='minus'){
+            console.log('below')
             res.status(200).send(`Rating cannot go below 0`)
         } else if(type==='plus'){
             movies[index].rating++
